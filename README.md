@@ -1,8 +1,14 @@
 # berserkers.net
 
 #### Requirements
-PHP
-Composer
+PHP  
+Composer  
+
+#### Dependencies
+Slim  
+Monolog  
+Twig  
+
 
 #### Serve Application
 To serve the application by calling the below command in the root app directory.
@@ -29,3 +35,5 @@ in the file ```src/settings``` folder.
 
 #### Further Docs
 [Slim Documentation](https://www.slimframework.com/docs/v3/tutorial/first-app.html)
+[Twig Documentation](https://twig.symfony.com/doc/2.x/)
+[Monolog Documentation](https://github.com/Seldaek/monolog/blob/master/doc/01-usage.md)
