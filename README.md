@@ -1,27 +1,31 @@
-# Slim Framework 3 Skeleton Application
+# berserkers.net
 
-Use this skeleton application to quickly setup and start working on a new Slim Framework 3 application. This application uses the latest Slim 3 with the PHP-View template renderer. It also uses the Monolog logger.
+#### Requirements
+PHP
+Composer
 
-This skeleton application was built for Composer. This makes setting up a new Slim Framework application quick and easy.
+#### Serve Application
+To serve the application by calling the below command in the root app directory.
+```Shell
+/bin/bash serve
+```
 
-## Install the Application
+#### Deploying to a shared server
+If your shared server runs Apache, then you need to create a .htaccess file in your web server root directory (usually named htdocs, public, public_html or www) with the following content:
+```htaccess
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteRule ^$ public/     [L]
+   RewriteRule (.*) public/$1 [L]
+</IfModule>
+```
 
-Run this command from the directory in which you want to install your new Slim Framework application.
+#### Display Errors
+To display full error details in the application set:
+```PHP
+  'displayErrorDetails' => false, // set to false in production
+```
+in the file ```src/settings``` folder.
 
-    php composer.phar create-project slim/slim-skeleton [my-app-name]
-
-Replace `[my-app-name]` with the desired directory name for your new application. You'll want to:
-
-* Point your virtual host document root to your new application's `public/` directory.
-* Ensure `logs/` is web writeable.
-
-To run the application in development, you can run these commands 
-
-	cd [my-app-name]
-	php composer.phar start
-
-Run this command in the application directory to run the test suite
-
-	php composer.phar test
-
-That's it! Now go build something cool.
+#### Further Docs
+[Slim Documentation](https://www.slimframework.com/docs/v3/tutorial/first-app.html)
