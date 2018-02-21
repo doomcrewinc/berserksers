@@ -23,7 +23,7 @@ If your shared server runs Apache, then you need to create a .htaccess file in y
 #### Display Errors
 To display full error details in the application set:
 ```PHP
-  'displayErrorDetails' => false, // set to false in production
+  'displayErrorDetails' => true, // set to false in production
 ```
 in the file ```src/settings``` folder.
 
