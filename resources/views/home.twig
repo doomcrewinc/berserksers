@@ -1,0 +1,10 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <form action="{{  path_for('post.results') }}">
+        {{  csrf_field() | raw }}
+        <input type="text" title="DNS Lookup" required>
+    </form>
+{% endblock %}
