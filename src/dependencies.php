@@ -19,6 +19,7 @@ $container['view'] = function ($container) {
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
     $view->addExtension(new App\Views\CsrfExtension($container['csrf']));
+    $view->addExtension(new App\Views\DebugExtension());
 
     return $view;
 };
@@ -29,6 +30,7 @@ $container['logger'] = function ($container) {
     $logger = new Monolog\Logger($settings['name']);
     $logger->pushProcessor(new Monolog\Processor\UidProcessor());
     $logger->pushHandler(new Monolog\Handler\StreamHandler($settings['path'], $settings['level']));
+
     return $logger;
 };
 

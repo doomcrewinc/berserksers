@@ -5,6 +5,7 @@
  */
 namespace App\Handlers;
 
+use Monolog\Logger;
 use Slim\Views\Twig;
 use Slim\Handlers\AbstractHandler;
 use Psr\Http\Message\ResponseInterface;

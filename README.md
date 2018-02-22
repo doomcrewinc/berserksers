@@ -33,6 +33,30 @@ To display full error details in the application set:
 ```
 in the file ```src/settings``` folder.
 
+#### Dumping Errors
+Use ```dump()``` in a variable to print it neatly to the page and kill the application
+
+i.e. dump of our response variable
+```html
+Response {#38 ▼
+  #status: 200
+  #reasonPhrase: ""
+  #protocolVersion: "1.1"
+  #headers: Headers {#39 ▼
+    #data: array:1 [▶]
+  }
+  #body: Body {#37 ▼
+    #stream: stream resource @50 ▶}
+    #meta: null
+    #readable: null
+    #writable: null
+    #seekable: null
+    #size: null
+    #isPipe: null
+  }
+}
+```
+
 #### Further Docs
 [Slim Documentation](https://www.slimframework.com/docs/v3/tutorial/first-app.html)
 [Twig Documentation](https://twig.symfony.com/doc/2.x/)

@@ -1,5 +1,7 @@
 <?php
-
+/**
+ * Custom CSRF Protection Twig Extension.
+ */
 namespace App\Views;
 
 use Slim\Csrf\Guard;
@@ -19,8 +21,7 @@ class CsrfExtension extends \Twig_Extension
      * This makes available our function to insert the csrf_field in our twig templates.
      * @return array|\Twig_Function[]
      */
-    public function getFunctions()
-    {
+    public function getFunctions() {
         return [
             new \Twig_SimpleFunction('csrf_field', array($this, 'csrfField')),
         ];
