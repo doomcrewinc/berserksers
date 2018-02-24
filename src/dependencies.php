@@ -20,6 +20,8 @@ $container['view'] = function ($container) {
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
     $view->addExtension(new App\Views\CsrfExtension($container['csrf']));
     $view->addExtension(new App\Views\DebugExtension());
+    $view->addExtension(new App\Views\CopyrightExtension());
+    $view->addExtension(new App\Views\IpExtension());
 
     return $view;
 };
