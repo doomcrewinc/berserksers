@@ -90,15 +90,9 @@ input.seamless-input {
     margin: 0 25px;
     text-align: center
 }
-input.seamless-input:active {
+input.seamless-input:active, input.seamless-input:focus {
     color: rgba(255,255,255,.5);
-    border-bottom: 1px solid #349696;
-    outline: none;
-    box-shadow: none;
-}
-input.seamless-input:focus {
-    color: rgba(255,255,255,.5);
-    border-bottom: 1px solid #349696;
+    border-bottom: 1px solid #67e2e2;
     outline: none;
     box-shadow: none;
 }
