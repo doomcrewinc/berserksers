@@ -1,7 +1,14 @@
 <?php
-// DIC configuration
+// session start
+session_start();
 
+// let's grab the app container
 $container = $app->getContainer();
+
+// flash messages
+$container['flash'] = function () {
+    return new \Slim\Flash\Messages();
+};
 
 // csrf protection
 $container['csrf'] = function ($container) {
@@ -18,10 +25,15 @@ $container['view'] = function ($container) {
     // Instantiate and add Slim specific extension
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+
+    // add additional helper extensions
     $view->addExtension(new App\Views\CsrfExtension($container['csrf']));
     $view->addExtension(new App\Views\DebugExtension());
     $view->addExtension(new App\Views\CopyrightExtension());
     $view->addExtension(new App\Views\IpExtension());
+
+    // make flash available to our views
+    $view->getEnvironment()->addGlobal('flash', $container['flash']);
 
     return $view;
 };

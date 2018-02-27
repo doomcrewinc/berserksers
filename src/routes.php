@@ -13,6 +13,6 @@ $app->group('/', function() {
 });
 
 $app->group('/results', function() {
-    $this->get('', ResultController::class . ':index')->setName('get.results');
+    $this->get('', ResultController::class . ':index')->setName('get.results');;
     $this->post('', ResultController::class . ':lookup')->setName('post.results');
 });

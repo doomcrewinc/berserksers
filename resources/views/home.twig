@@ -9,10 +9,11 @@
             <div class="col col-lg-6 col-md-10 col-sm-12">
                 <fieldset class="fieldset dns-search">
                     <legend>Welcome {{ clientIp() | raw }}</legend>
-                    <form action="{{  path_for('post.results') }}">
+                    <form action="{{  path_for('post.results') }}" method="post" accept-charset="UTF-8">
                         {{  csrf_field() | raw }}
                         <div class="form-group row">
                             <input
+                                name="lookup"
                                 class="form-control form-control-lg seamless-input bg-dark"
                                 type="text"
                                 title="DNS Lookup"
