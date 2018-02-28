@@ -4,8 +4,13 @@ body {
 }
 
 div.body {
-    margin: 0;
+    margin: 25% 0 0 0;
     padding: 0;
+}
+
+div.page-content {
+    height: 100vh;
+    position: relative;
 }
 
 fieldset.fieldset {
@@ -36,6 +41,7 @@ fieldset.dns-search button[type=submit] {
 /* Navbar */
 nav.navbar {
     border-bottom: 1px solid rgba(51, 153, 153, 0.4);
+    width: 100%;
 }
 
 .navbar-brand {
@@ -70,29 +76,29 @@ div.footer {
     width: 100%;
     height: 60px;
     line-height: 60px;
-}
-
-div.footer {
     text-align: center;
     font-size: 0.6rem;
     color: rgba(255,255,255,.5);
 }
+
 div.footer a {
     color: teal;
 }
 
 input.seamless-input {
+    position: relative;
     color: rgba(255,255,255,.5);
     border: none;
+    border-bottom: 1px solid rgba(255,255,255,.5);
     outline: none;
-    border-bottom: 1px solid #349696;
     border-radius: 0;
     margin: 0 25px;
-    text-align: center
+    text-align: center;
+    transition: all 250ms ease-in;
 }
 input.seamless-input:active, input.seamless-input:focus {
     color: rgba(255,255,255,.5);
-    border-bottom: 1px solid #67e2e2;
+    border-bottom: 1px solid teal;
     outline: none;
     box-shadow: none;
 }
