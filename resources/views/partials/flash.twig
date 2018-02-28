@@ -1,11 +1,19 @@
 {% if flash.getMessage('errors') %}
-    <div class="alert alert-danger">
+    <div class="col-lg-6 col-md-10 col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
         {{ flash.getMessage('errors').0 }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <div class="w-100 d-none d-md-block"></div>
 {% endif %}
 
 {% if flash.getMessage('success') %}
-    <div class="alert alert-success">
+    <div class="col-lg-6 col-md-10 col-sm-12 alert alert-success  alert-dismissible fade show" role="alert">
         {{ flash.getMessage('success').0 }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <div class="w-100 d-none d-md-block"></div>
 {% endif %}
