@@ -11,8 +11,8 @@ $container['flash'] = function () {
 };
 
 // csrf protection
-$container['csrf'] = function ($container) {
-    return new \Slim\Csrf\Guard;
+$container['csrf'] = function () {
+    return new \Slim\Csrf\Guard();
 };
 
 // twig
