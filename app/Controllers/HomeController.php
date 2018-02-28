@@ -14,6 +14,6 @@ class HomeController extends Controller
      * @return \Slim\Views\Twig
      */
     public function index($request, $response) {
-        return $this->container->view->render($response, 'home.twig', ['response' => $response]);
+        return $this->view->render($response, 'home.twig', ['response' => $response]);
     }
 }
