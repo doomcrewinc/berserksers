@@ -5,7 +5,9 @@
  */
 namespace App\Controllers;
 
-use App\Classes\Records;
+use App\Classes\RecordHandler;
+use App\Validation\Validator;
+use Respect\Validation\Validator as v;
 
 class ResultController extends Controller
 {
@@ -14,13 +16,18 @@ class ResultController extends Controller
     }
 
     public function lookup($request, $response) {
-        if ($lookup = $request->getParam('lookup')) {
-            $handler = new Records($lookup);
+        v::with('App\\Validation\\Rules\\');
 
-            return $response;
-        } else {
-            $this->flash->addMessage('errors', 'Invalid IP/Domain format.');
+        $validator = $this->validator->validate($request, [
+            'search' => v::notEmpty()->noWhitespace()->isDomainOrIp(),
+        ]);
+
+        if ($validator->failed()) {
+            $this->flash->addMessage('errors', $validator->errors()['search']);
             return $response->withRedirect($this->router->pathFor('get.index'));
+        } else {
+            $handler = new RecordHandler($lookup);
+            return $response;
         }
     }
 

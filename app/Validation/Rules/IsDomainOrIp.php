@@ -14,10 +14,18 @@ class IsDomainOrIp extends AbstractRule
 {
     protected $comparison;
 
+    /**
+     * IsDomainOrIp constructor.
+     * @param $comparison
+     */
     public function __construct($comparison) {
         $this->comparison = $comparison;
     }
 
+    /**
+     * @param $input
+     * @return bool
+     */
     public function validate($input) {
         return false;
     }
