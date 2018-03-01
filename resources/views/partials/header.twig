@@ -2,21 +2,22 @@
     <div class="col col-lg-12 col-md-12 col-sm-12">
         <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
-            <a href="{{ baseUrl }}" class="navbar-brand">
-                <img class="d-inline-block align-top" src="{{  baseUrl }}/img/logo.png" alt="berserkers.net">
+            <a href="{{ path_for('get.index') }}" class="navbar-brand">
+                <img class="d-inline-block align-top" src="/img/logo.png" alt="berserkers.net">
                 berserkers.net
             </a>
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
                 <ul class="navbar-nav inline">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{ baseUrl }}">Home</a>
+                        <a class="nav-link" href="{{ path_for('get.index') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             DNS Tools
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">

@@ -13,32 +13,7 @@ div.page-content {
     position: relative;
 }
 
-fieldset.fieldset {
-    padding: .5rem 1.25rem;
-    margin: 1.125rem 0;
-    border: 1px solid #cacaca;
-}
-
-fieldset.fieldset legend {
-    color: rgba(204,204,204,.8);
-    width: initial !important;
-    margin: 0 0 0 -0.1875rem;
-    padding: 0 0.4875rem;
-}
-
-fieldset.fieldset legend span.ip {
-    color: #349696;
-}
-
-fieldset.dns-search {
-    text-align: center;
-}
-fieldset.dns-search button[type=submit] {
-    width: 50%;
-    min-width: 150px;
-}
-
-/* Navbar */
+/* Navigation */
 nav.navbar {
     border-bottom: 1px solid rgba(51, 153, 153, 0.4);
     width: 100%;
@@ -85,6 +60,29 @@ div.footer a {
     color: teal;
 }
 
+/* Form Elements */
+fieldset.fieldset {
+    padding: .5rem 1.25rem;
+    margin: 1.125rem 0;
+    border: 1px solid #cacaca;
+}
+fieldset.fieldset legend {
+    color: rgba(204,204,204,.8);
+    width: initial !important;
+    margin: 0 0 0 -0.1875rem;
+    padding: 0 0.4875rem;
+}
+fieldset.fieldset legend span.ip {
+    color: #349696;
+}
+fieldset.dns-search {
+    text-align: center;
+}
+fieldset.dns-search button[type=submit] {
+    width: 50%;
+    min-width: 150px;
+}
+
 input.seamless-input {
     position: relative;
     color: rgba(255,255,255,.5);
@@ -103,16 +101,37 @@ input.seamless-input:active, input.seamless-input:focus {
     box-shadow: none;
 }
 
+/* Alerts */
+div.alert-danger ul {
+    margin: 0;
+}
+
+/* Error Pages */
+div.whoops {
+    color: #fff;
+}
+div.whoops-icon {
+    float: left;
+    font-size: 16rem;
+    color: teal;
+}
+div.whoops-text {
+    float: right;
+    color: #fff;
+    margin-top: 22%;
+}
+div.whoops-text h4, div.whoops-text p {
+    font-weight: 300;
+}
+
+/* Bootstrap Overrides */
 .btn-primary {
     background: #349696;
     border: none;
 }
-
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus,
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
     background: teal;
     border: none;
     box-shadow: none;
 }
-
-

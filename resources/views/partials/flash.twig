@@ -1,6 +1,10 @@
 {% if flash.getMessage('errors') %}
     <div class="col-lg-6 col-md-10 col-sm-12 alert alert-danger alert-dismissible fade show" role="alert">
-        {{ flash.getMessage('errors').0 }}
+        <ul>
+            {% for error in flash.getMessage('errors').0 %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
