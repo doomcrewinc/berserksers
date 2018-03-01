@@ -9,7 +9,7 @@
 namespace App\Classes;
 
 
-class Records
+class RecordHandler
 {
     private $is_domain;
 
@@ -30,7 +30,6 @@ class Records
         $this->is_domain    = false;
         $this->is_ip        = false;
     }
-
 
     public function getA() {
 
