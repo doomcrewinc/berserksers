@@ -15,6 +15,11 @@ $container['csrf'] = function () {
     return new \Slim\Csrf\Guard();
 };
 
+// validator
+$container['validator'] = function() {
+    return new \App\Validation\Validator;
+};
+
 // twig
 $container['view'] = function ($container) {
     $settings = $container->get('settings')['twig'];
