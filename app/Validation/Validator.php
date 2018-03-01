@@ -6,17 +6,36 @@
  * Time: 2:54 PM
  */
 
-namespace Validation\App;
+namespace App\Validation;
+
+use Respect\Validation\Exceptions\NestedValidationException;
 
 class Validator
 {
-    private $errors = [];
+    protected $errors = [];
 
-    public function __construct() {
+    /**
+     * @param       $request
+     * @param array $rules
+     * @return      $this
+     */
+    public function validate($request, array $rules) {
+        foreach ($rules as $field => $rule) {
+            try {
+                $rule->setName(ucfirst($field))->assert($request->getParam($field));
+            } catch(NestedValidationException $e) {
+                $this->errors[$field] = $e->getMessages();
+            }
+        }
 
+        return $this;
     }
 
-    public function validate() {
+    public function failed() {
+        return !empty($this->errors);
+    }
 
+    public function errors() {
+        return $this->errors;
     }
 }
