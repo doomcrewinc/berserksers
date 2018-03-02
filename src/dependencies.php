@@ -1,7 +1,4 @@
 <?php
-// session start
-session_start();
-
 // let's grab the app container
 $container = $app->getContainer();
 

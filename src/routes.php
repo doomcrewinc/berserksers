@@ -16,3 +16,5 @@ $app->group('/results', function() {
     $this->get('', ResultController::class . ':index')->setName('get.results');;
     $this->post('', ResultController::class . ':lookup')->setName('post.results');
 });
+
+$app->add(new \App\Middleware\OldInputMiddleware($container->view));
