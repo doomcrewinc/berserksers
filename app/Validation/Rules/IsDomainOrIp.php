@@ -12,21 +12,14 @@ use Respect\Validation\Rules\AbstractRule;
 
 class IsDomainOrIp extends AbstractRule
 {
-    protected $comparison;
-
     /**
-     * IsDomainOrIp constructor.
-     * @param $comparison
-     */
-    public function __construct($comparison) {
-        $this->comparison = $comparison;
-    }
-
-    /**
-     * @param $input
+     * @param $string
      * @return bool
      */
-    public function validate($input) {
+    public function validate($string) {
+        if (is_domain($string) || is_ipv4($string) || is_ipv6($string)) {
+            return true;
+        }
         return false;
     }
 }
