@@ -1,19 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: drupp
- * Date: 2/27/2018
- * Time: 2:56 PM
- */
 
 namespace App\Classes;
 
-
-class RecordHandler
+class DnsRecord
 {
     protected $search;
-    protected $is_domain;
-    protected $is_ip;
 
     protected $mapped_options = [
         'a'     => DNS_A,
@@ -28,27 +19,34 @@ class RecordHandler
 
     /**
      * RecordHandler constructor.
-     * @param $input
+     *
+     * @param $request
      */
-    public function __construct($input) {
-        $this->search       = $input;
-        $this->is_domain    = is_domain($input);
-        $this->is_ip        = is_ip($input);
+    public function __construct($request) {
+        $search = $request->getParam('search');
 
-        if ($this->is_ip) {
-            $this->search = gethostbyaddr($this->search);
+        if (is_ip($search)) {
+            $search = gethostbyaddr($search);
         }
 
+        $this->search = strip_scheme($search);
     }
 
+    /**
+     * Gets all DNS records and only maps the records we allow to be returned.
+     *
+     * @return array
+     */
     public function getRecords() {
-        $records = [];
-
+        $records    = [];
         $allRecords = $this->getAll();
 
         if (!empty($allRecords)) {
             foreach ($allRecords as $record) {
-                
+                $type = strtolower($record['type']);
+                if (!empty($this->mapped_options[$type])) {
+                    $records[] = $record;
+                }
             }
         }
 
@@ -57,6 +55,8 @@ class RecordHandler
 
 
     /**
+     * Get a single record type
+     *
      * @param $recordType
      * @return array|null
      */
@@ -70,11 +70,22 @@ class RecordHandler
         return null;
     }
 
+    /**
+     * Get all DNS records for a domain
+     *
+     * @return array
+     */
     protected function getAll() {
         return dns_get_record($this->search, DNS_ALL);
     }
 
+    /**
+     * Check the requested record type is one we allow
+     *
+     * @param $recordType
+     * @return bool
+     */
     protected function validRecordType($recordType) {
-        return !empty($mapped_options[$recordType]);
+        return !empty($this->mapped_options[$recordType]);
     }
 }
