@@ -1,9 +1,8 @@
 <?php
-/**
- * @author Drew Ruppel
- * Controller for index page functionality.
- */
+
 namespace App\Controllers;
+
+use App\Classes\DnsRecord;
 
 class HomeController extends Controller
 {
