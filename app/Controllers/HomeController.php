@@ -2,8 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Classes\DnsRecord;
-
 class HomeController extends Controller
 {
     /**
