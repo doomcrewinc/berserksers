@@ -4,6 +4,10 @@ body {
 }
 
 div.body {
+    margin-top: 5%;
+}
+
+div.float-input {
     margin: 25% 0 0 0;
     padding: 0;
 }
@@ -13,10 +17,24 @@ div.page-content {
     position: relative;
 }
 
+h5.section-header {
+    color: #349696;
+    background: #212529;
+    margin-bottom: 0;
+    padding: 0.25rem .55rem;
+    cursor: hand;
+    cursor: pointer;
+}
+
+.section-expander {
+    float: right;
+}
+
 /* Navigation */
 nav.navbar {
-    border-bottom: 1px solid rgba(51, 153, 153, 0.4);
     width: 100%;
+    padding-bottom: 0;
+    border-bottom: 1px solid rgba(255,255,255,.5);
 }
 
 .navbar-brand {
@@ -29,6 +47,18 @@ nav.navbar {
 .navbar-brand img {
     width: 30px;
     height: 30px;
+}
+li.nav-item:first-child {
+    margin-left: 2rem;
+}
+li.nav-item.active {
+    position: relative;
+}
+li.nav-item.active:after {
+    content: '';
+    width: 100%;
+    position: absolute;
+    border-bottom: 2px solid #349696;
 }
 
 .dropdown-menu {
@@ -67,10 +97,11 @@ fieldset.fieldset {
     border: 1px solid #cacaca;
 }
 fieldset.fieldset legend {
-    color: rgba(204,204,204,.8);
+    color: rgb(234, 234, 234);
     width: initial !important;
     margin: 0 0 0 -0.1875rem;
     padding: 0 0.4875rem;
+    font-weight: 400;
 }
 fieldset.fieldset legend span.ip {
     color: #349696;
@@ -83,8 +114,11 @@ fieldset.dns-search button[type=submit] {
     min-width: 150px;
 }
 
+form div.form-group label {
+    color: rgba(234, 234, 234, .85);
+}
+
 input.seamless-input {
-    position: relative;
     color: rgba(255,255,255,.5);
     border: none;
     border-bottom: 1px solid rgba(255,255,255,.5);
@@ -131,7 +165,34 @@ div.whoops-text h4, div.whoops-text p {
 }
 .btn-primary:hover, .btn-primary:active, .btn-primary:focus,
 .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: rgba(255, 255, 255, .7);
     background: teal;
     border: none;
     box-shadow: none;
+}
+
+.table td, .table th {
+    padding: 0.25rem .55rem;
+}
+
+table.table thead tr th {
+    color: rgba(255,255,255,.75) !important;
+}
+
+table.table tbody tr td {
+    color: rgba(255,255,255,.5) !important;
+}
+
+div.table-responsive {
+    margin-bottom: 15px;
+}
+
+tr th.type {
+    width: 80px;
+}
+tr th.class {
+    width: 110px;
+}
+tr th.ttl {
+    width: 80px;
 }
