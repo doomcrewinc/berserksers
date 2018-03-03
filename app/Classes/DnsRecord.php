@@ -45,7 +45,7 @@ class DnsRecord
             foreach ($allRecords as $record) {
                 $type = strtolower($record['type']);
                 if (!empty($this->mapped_options[$type])) {
-                    $records[] = $record;
+                    $records[$type][] = $record;
                 }
             }
         }
