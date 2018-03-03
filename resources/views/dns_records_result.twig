@@ -1,0 +1,167 @@
+{% extends 'layouts/app.twig' %}
+
+{% block title %}Berserkers | Results{% endblock %}
+
+{% block content %}
+    <div class="row body align-items-center justify-content-center">
+
+        <div class="col">
+            {% if records|length > 0 %}
+                {# A/AAAA RECORDS #}
+                <div class="table-responsive">
+                    <h5 class="section-header" aria-expanded="true">A\AAAA Records
+                        <i class="fas fa-angle-double-up section-expander"></i></h5>
+                    <table class="table table-dark table-striped">
+                        {% if records.a|length > 0 or record.aaaa|length > 0 %}
+                            <thead>
+                            <tr>
+                                <th scope="col" class="type">TYPE</th>
+                                <th scope="col" class="class">CLASS</th>
+                                <th scope="col" class="ttl">TTL</th>
+                                <th scope="col">IP</th>
+                            </tr>
+                            </thead>
+                            {% for record in records.a %}
+                                <tr>
+                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.class }}</td>
+                                    <td>{{ record.ttl }}</td>
+                                    <td>{{ record.ip }}</td>
+                                </tr>
+                            {% endfor %}
+                            {% for record in records.aaaa %}
+                                <tr>
+                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.class }}</td>
+                                    <td>{{ record.ttl }}</td>
+                                    <td>{{ record.ip }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+                {# END A/AAAA RECORDS #}
+
+                {# MX RECORDS #}
+                <div class="table-responsive">
+                    <h5 class="section-header" aria-expanded="true">MX Records
+                        <i class="fas fa-angle-double-up section-expander"></i>
+                    </h5>
+                    <table class="table table-dark table-striped">
+                        {% if records.mx|length > 0 %}
+                            <thead>
+                            <tr>
+                                <th scope="col" class="type">TYPE</th>
+                                <th scope="col" class="class">CLASS</th>
+                                <th scope="col" class="ttl">TTL</th>
+                                <th scope="col">HOST</th>
+                                <th scope="col">PRI</th>
+                            </tr>
+                            </thead>
+                            {% for record in records.mx %}
+                                <tr>
+                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.class }}</td>
+                                    <td>{{ record.ttl }}</td>
+                                    <td>{{ record.target }}</td>
+                                    <td>{{ record.pri }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+                {# END MX RECORDS #}
+
+                {# NS RECORDS #}
+                <div class="table-responsive">
+                    <h5 class="section-header" aria-expanded="true">NS Records
+                        <i class="fas fa-angle-double-up section-expander"></i>
+                    </h5>
+                    <table class="table table-dark table-striped">
+                        {% if records.ns|length > 0 %}
+                            <thead>
+                            <tr>
+                                <th scope="col" class="type">TYPE</th>
+                                <th scope="col" class="class">CLASS</th>
+                                <th scope="col" class="ttl">TTL</th>
+                                <th scope="col">HOST</th>
+                            </tr>
+                            </thead>
+                            {% for record in records.ns %}
+                                <tr>
+                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.class }}</td>
+                                    <td>{{ record.ttl }}</td>
+                                    <td>{{ record.target }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+                {# END NS RECORDS #}
+
+                {# SOA RECORDS #}
+                <div class="table-responsive">
+                    <h5 class="section-header" aria-expanded="true">SOA Records
+                        <i class="fas fa-angle-double-up section-expander"></i>
+                    </h5>
+                    <table class="table table-dark table-striped">
+                        {% if records.soa|length > 0 %}
+                            <thead>
+                            <tr>
+                                <th scope="col" class="type">TYPE</th>
+                                <th scope="col" class="class">CLASS</th>
+                                <th scope="col" class="ttl">TTL</th>
+                                <th scope="col">HOST</th>
+                                <th scope="col">SERIAL</th>
+                            </tr>
+                            </thead>
+                            {% for record in records.soa %}
+                                <tr>
+                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.class }}</td>
+                                    <td>{{ record.ttl }}</td>
+                                    <td>{{ record.mname }}</td>
+                                    <td>{{ record.serial }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+                {# END SOA RECORDS #}
+
+                {# TXT RECORDS #}
+                <div class="table-responsive">
+                    <h5 class="section-header" aria-expanded="true">TXT Records
+                        <i class="fas fa-angle-double-up section-expander"></i>
+                    </h5>
+                    <table class="table table-dark table-striped">
+                        {% if records.txt|length > 0 %}
+                            <thead>
+                            <tr>
+                                <th scope="col" class="type">TYPE</th>
+                                <th scope="col" class="class">CLASS</th>
+                                <th scope="col" class="ttl">TTL</th>
+                                <th scope="col">ENTRY</th>
+                            </tr>
+                            </thead>
+                            {% for record in records.txt %}
+                                <tr>
+                                    <td>{{ record.type }}</td>
+                                    <td>{{ record.class }}</td>
+                                    <td>{{ record.ttl }}</td>
+                                    <td>{{ record.txt }}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </table>
+                </div>
+                {# END TXT RECORDS #}
+            {% else %}
+                <div class="no-records">
+                    No results could be found for your query.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
