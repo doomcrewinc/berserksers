@@ -27,7 +27,7 @@ class ResultController extends Controller
         } else {
             $handler = new DnsRecord($request);
             $records = $handler->getRecords();
-            return $this->view->render($response, 'results.twig', compact($records, $response));
+            return $this->view->render($response, 'dns_records_result.twig', ['records' => $records, 'response' => $response]);
         }
     }
 }
