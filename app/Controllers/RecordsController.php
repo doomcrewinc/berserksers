@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Classes\DnsRecord;
-use App\Validation\Validator;
 use Respect\Validation\Validator as v;
 
 class RecordsController extends Controller
