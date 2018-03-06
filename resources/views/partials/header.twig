@@ -20,9 +20,9 @@
                             DNS Tools
                         </a>
                         <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Whois</a>
-                            <a class="dropdown-item" href="#">DNS Blacklist</a>
-                            <a class="dropdown-item" href="#">DNS Records</a>
+                            <a class="dropdown-item" href="{{ path_for('get.whois') }}">Whois</a>
+                            <a class="dropdown-item" href="{{ path_for('get.blacklists') }}">DNS Blacklist</a>
+                            <a class="dropdown-item" href="{{ path_for('get.records') }}">DNS Records</a>
                         </div>
                     </li>
                 </ul>

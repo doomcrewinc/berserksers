@@ -10,7 +10,7 @@
     <div class="col col-lg-8 col-md-10 col-sm-12">
         <fieldset class="fieldset dns-search">
             <legend>Welcome {{ clientIp() | raw }}</legend>
-            <form action="{{  path_for('post.results') }}" method="post" accept-charset="UTF-8">
+            <form action="{{  path_for('post.records') }}" method="post" accept-charset="UTF-8">
                 {{  csrf_field() | raw }}
                 <div class="form-group row">
                     <input
