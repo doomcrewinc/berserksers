@@ -39,13 +39,25 @@ class DnsBlacklist
         $this->ip = $ip;
     }
 
-    public function isBlacklisted($string) {
+    public function isBlacklisted() {
+        $reverse_ip = implode(".", array_reverse(explode(".", $this->ip)));
 
-
+        if ($this->checkBlacklists($reverse_ip)) {
+            return $this->blacklisted;
+        }
+        return false;
     }
 
     protected function checkBlacklists() {
+        $blacklisted = [];
 
+        foreach ($this->dnsbl as $bl) {
+            $lookup = $reverse_ip . "." . $bl;
+            $result = gethostbyname($lookup)
+            if ($result == $lookup) {
+                $blacklisted[] = $bl;
+            }
+        }
     }
 
 }
