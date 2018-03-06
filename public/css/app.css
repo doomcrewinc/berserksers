@@ -1,10 +1,11 @@
 /* General */
-body {
+html, body {
     height: 100vh;
 }
 
 div.body {
     margin-top: 5%;
+    padding-bottom: 80px;
 }
 
 div.float-input {
@@ -12,8 +13,8 @@ div.float-input {
     padding: 0;
 }
 
-div.page-content {
-    height: 100vh;
+div.wrapper {
+    min-height: 100%;
     position: relative;
 }
 
