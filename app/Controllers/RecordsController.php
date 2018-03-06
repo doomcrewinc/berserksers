@@ -6,10 +6,16 @@ use App\Classes\DnsRecord;
 use App\Validation\Validator;
 use Respect\Validation\Validator as v;
 
-class ResultController extends Controller
+class RecordsController extends Controller
 {
+    /**
+     * @param $request
+     * @param $response
+     *
+     * @return \Slim\Views\Twig
+     */
     public function index($request, $response) {
-
+        return $this->view->render($response, '/pages/dns/records/index.twig', ['response' => $response]);
     }
 
     public function lookup($request, $response) {
@@ -27,7 +33,7 @@ class ResultController extends Controller
         } else {
             $handler = new DnsRecord($request);
             $records = $handler->getRecords();
-            return $this->view->render($response, 'dns_records_result.twig', ['records' => $records, 'response' => $response]);
+            return $this->view->render($response, '/pages/dns/records/result.twig', ['records' => $records, 'response' => $response]);
         }
     }
 }
