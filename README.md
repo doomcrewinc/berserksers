@@ -4,7 +4,7 @@
 
 - [X] Awesome viking stylizing
 - [X] IPV4/IPV6 validator
-- [X] 
+- [X] Incorporate into Slim Framework
 - [ ] Debate pros/cons of outsourcing whois lookup vs internal handling (the massive array) Re: Request Limits vs Self-Sufficiency.
 - [ ] ARIN/RIPE IP WhoIS [whois-service](http://www.webservicex.net/whois.asmx?op=GetWhoIS) performs a domain WHOIS, not an IP WhoIS
 - [ ] who-hosts-this/whatcms API Integration
