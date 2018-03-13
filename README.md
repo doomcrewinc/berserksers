@@ -1,5 +1,17 @@
 # berserkers.net
 
+### TODO
+
+- [X] Awesome viking stylizing
+- [X] IPV4/IPV6 validator
+- [X] Incorporate into Slim Framework
+- [ ] Debate pros/cons of outsourcing whois lookup vs internal handling (the massive array) Re: Request Limits vs Self-Sufficiency.
+- [ ] ARIN/RIPE IP WhoIS [whois-service](http://www.webservicex.net/whois.asmx?op=GetWhoIS) performs a domain WHOIS, not an IP WhoIS
+- [ ] who-hosts-this/whatcms API Integration
+- [ ] Admin export of: REMOTEIP, SEARCH_STR to either JSON or CSV for analytics
+- [ ] Potential graphs of traffic in/out (can be done with a variety of different packages, python, webalyzer, etc)
+- [ ] Cloudflare Integration ⤴️
+
 #### Requirements
 PHP  
 Composer  
