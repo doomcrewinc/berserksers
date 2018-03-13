@@ -27,5 +27,4 @@ class OldInputMiddleware
 
         return $next($request, $response);
     }
-
 }

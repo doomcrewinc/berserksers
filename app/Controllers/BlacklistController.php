@@ -18,4 +18,12 @@ class BlacklistController extends Controller
 
         return $this->view->render($response, '/pages/dns/blacklist/result.twig', ['response' => $response]);
     }
+
+    public function queryBlacklist($request, $response) {
+
+    }
+
+    public function getBlacklist($request, $response) {
+        dump($request->getContentType());
+    }
 }

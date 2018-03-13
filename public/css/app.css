@@ -93,6 +93,8 @@ div.footer a {
 
 /* Form Elements */
 fieldset.fieldset {
+    position: relative;
+    vertical-align: middle;
     padding: 1.5rem 1.25rem;
     margin: 1.125rem 0;
     border: 1px solid #cacaca;
@@ -103,6 +105,8 @@ fieldset.fieldset legend {
     margin: 0 0 0 -0.1875rem;
     padding: 0 0.4875rem;
     font-weight: 400;
+    background: #353a40;
+    z-index: 999;
 }
 fieldset.fieldset legend span.ip {
     color: #349696;
@@ -172,6 +176,7 @@ div.whoops-text h4, div.whoops-text p {
     box-shadow: none;
 }
 
+/* Records Table */
 .table td, .table th {
     padding: 0.25rem .55rem;
 }
