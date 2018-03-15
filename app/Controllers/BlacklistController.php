@@ -27,8 +27,8 @@ class BlacklistController extends Controller
     }
 
     public function queryBlacklist(Request $request, Response $response) {
-        if (is_json($request)) {
-            return $this->challenge();
+        if (is_json($request) && $request->isPost()) {
+            return ; // TODO: return our challenge to the dnsbl we received + ip.
         }
         return null;
     }
