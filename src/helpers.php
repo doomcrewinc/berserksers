@@ -2,6 +2,7 @@
 
 if (!function_exists('strip_scheme')) {
     /**
+     * Strips the scheme off of the uri.
      * @param string $string
      * @return null|string
      */
@@ -15,6 +16,7 @@ if (!function_exists('strip_scheme')) {
 
 if (!function_exists('is_domain')) {
     /**
+     * Checks if string is a valid form of domain.
      * @param $string
      * @return false|int
      */
@@ -25,6 +27,7 @@ if (!function_exists('is_domain')) {
 
 if (!function_exists('is_ip')) {
     /**
+     * Checks if is valid form of IP.
      * @param string $string
      * @return bool
      */
@@ -35,6 +38,7 @@ if (!function_exists('is_ip')) {
 
 if (!function_exists('is_ipv4')) {
     /**
+     * Checks if string is valid IPv4.
      * @param string $string
      * @return bool
      */
@@ -45,6 +49,7 @@ if (!function_exists('is_ipv4')) {
 
 if (!function_exists('is_ipv6')) {
     /**
+     * Checks if string is valid IPv6.
      * @param string $string
      * @return bool
      */
@@ -53,10 +58,40 @@ if (!function_exists('is_ipv6')) {
     }
 }
 
-function ipv6_numeric($ip) {
-    $binNum = '';
-    foreach (unpack('C*', inet_pton($ip)) as $byte) {
-        $binNum .= str_pad(decbin($byte), 8, "0", STR_PAD_LEFT);
+if (!function_exists('is_json')) {
+    /**
+     * Note: Slim Request specific.
+     * Checks if is \Slim\Http\Request object and is Content-Type: application/json.
+     * @param $request
+     * @return bool
+     */
+    function is_json($request) {
+        if ($request instanceof \Slim\Http\Request && $request->getContentType() === 'application/json') {
+            return true;
+        }
+        return false;
     }
-    return base_convert(ltrim($binNum, '0'), 2, 10);
+}
+
+if (!function_exists('is_post')) {
+    /**
+     * @return bool
+     */
+    function is_post() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return true;
+        }
+        return false;
+    }
+}
+
+if (!function_exists('ipv6_numeric')) {
+    function ipv6_numeric($ip) {
+        $binNum = '';
+        foreach (unpack('C*', inet_pton($ip)) as $byte) {
+            $binNum .= str_pad(decbin($byte), 8, "0", STR_PAD_LEFT);
+        }
+
+        return base_convert(ltrim($binNum, '0'), 2, 10);
+    }
 }
