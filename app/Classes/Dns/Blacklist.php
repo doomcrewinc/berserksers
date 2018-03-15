@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Classes;
+namespace App\Classes\Dns;
 
-class DnsBlacklist
+class Blacklist
 {
     protected $ip = '';
 
     protected $blacklisted = [];
 
-    protected $dnsBlackLists = [
+    protected $list = [
       'all.s5h.net', 'b.barracudacentral.org', 'bl.emailbasura.org',
       'bl.spamcannibal.org', 'bl.spamcop.net', 'blacklist.woody.ch',
       'bogons.cymru.com', 'cbl.abuseat.org', 'cdl.anti-spam.org.cn',
@@ -53,7 +53,7 @@ class DnsBlacklist
     protected function checkBlacklists($reverse_ip) {
         $blacklisted = [];
 
-        foreach ($this->dnsBlackLists as $bl) {
+        foreach ($this->list as $bl) {
             $lookup = $reverse_ip . "." . $bl;
             $result = gethostbyname($lookup);
             if ($result === $lookup) {
@@ -63,7 +63,7 @@ class DnsBlacklist
 
         dump($blacklisted);
         die;
-        return (!empty($this->blacklisted)) ? true : false;
+        return (!empty($this->list)) ? true : false;
     }
 
 }

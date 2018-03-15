@@ -2,7 +2,9 @@
 
 namespace App\Controllers;
 
-use App\Classes\DnsRecord;
+use App\Classes\Dns\Record;
+use Slim\Http\Request;
+use Slim\Http\Response;
 use Respect\Validation\Validator as v;
 
 class RecordsController extends Controller
@@ -13,11 +15,11 @@ class RecordsController extends Controller
      *
      * @return \Slim\Views\Twig
      */
-    public function index($request, $response) {
+    public function index(Request $request, Response $response) {
         return $this->view->render($response, '/pages/dns/records/index.twig', ['response' => $response]);
     }
 
-    public function lookup($request, $response) {
+    public function lookup(Request $request, Response $response) {
         // load our custom rules for validation
         v::with('App\\Validation\\Rules\\');
 
@@ -30,7 +32,7 @@ class RecordsController extends Controller
             $this->flash->addMessage('errors', $validator->errors()['search']);
             return $response->withRedirect($this->router->pathFor('get.index'));
         } else {
-            $handler = new DnsRecord($request);
+            $handler = new Record($request);
             $records = $handler->getRecords();
             return $this->view->render($response, '/pages/dns/records/result.twig', ['records' => $records, 'response' => $response]);
         }
