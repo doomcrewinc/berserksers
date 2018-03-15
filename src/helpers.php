@@ -75,6 +75,7 @@ if (!function_exists('is_json')) {
 
 if (!function_exists('is_post')) {
     /**
+     * Checks that an http request is of post type.
      * @return bool
      */
     function is_post() {
@@ -86,6 +87,11 @@ if (!function_exists('is_post')) {
 }
 
 if (!function_exists('ipv6_numeric')) {
+    /**
+     * Gets the numeric value of IPv6 address.
+     * @param $ip
+     * @return string
+     */
     function ipv6_numeric($ip) {
         $binNum = '';
         foreach (unpack('C*', inet_pton($ip)) as $byte) {
