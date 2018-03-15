@@ -8,7 +8,7 @@ class Blacklist
 
     protected $blacklisted = [];
 
-    protected $list = [
+    protected static $dnsbl = [
       'all.s5h.net', 'b.barracudacentral.org', 'bl.emailbasura.org',
       'bl.spamcannibal.org', 'bl.spamcop.net', 'blacklist.woody.ch',
       'bogons.cymru.com', 'cbl.abuseat.org', 'cdl.anti-spam.org.cn',
@@ -41,6 +41,10 @@ class Blacklist
         $this->ip = $ip;
     }
 
+    public static function returnList() {
+        return self::$dnsbl;
+    }
+
     public function isBlacklisted() {
         $reverse_ip = implode(".", array_reverse(explode(".", $this->ip)));
 
@@ -50,20 +54,16 @@ class Blacklist
         return false;
     }
 
+
     protected function checkBlacklists($reverse_ip) {
         $blacklisted = [];
 
-        foreach ($this->list as $bl) {
-            $lookup = $reverse_ip . "." . $bl;
+        foreach (self::$dnsbl as $server) {
+            $lookup = $reverse_ip . "." . $server;
             $result = gethostbyname($lookup);
-            if ($result === $lookup) {
-                $blacklisted[] = $bl;
-            }
+            $blacklisted[$server] = ($result === $lookup) ?  true : false;
         }
 
-        dump($blacklisted);
-        die;
-        return (!empty($this->list)) ? true : false;
+        return (!empty(self::$dnsbl)) ? true : false;
     }
-
 }
