@@ -26,11 +26,19 @@ class BlacklistController extends Controller
         return $this->view->render($response, '/pages/dns/blacklist/result.twig', ['response' => $response]);
     }
 
+    /**
+     * @param Request  $request
+     * @param Response $response
+     * @return Response
+     */
     public function queryBlacklist(Request $request, Response $response) {
-        if (is_json($request) && $request->isPost()) {
-            return ; // TODO: return our challenge to the dnsbl we received + ip.
+        if (is_json($request) && $request->isGet()) {
+            $dns    = new Blacklist($request);
+            $result = $dns->checkIfBlacklisted();
+            return $response->withJson($result);
+        } else {
+            return $response->withStatus(400, 'Error: unacceptable request');
         }
-        return null;
     }
 
     /**
@@ -39,12 +47,10 @@ class BlacklistController extends Controller
      * @return Response
      */
     public function getBlacklist(Request $request, Response $response) {
-        $value = [];
-
         if (is_json($request)) {
-            $value = Blacklist::returnList();
+            return $response->withJson(Blacklist::returnList());
+        } else {
+            return $response->withStatus(400, 'Error: unacceptable request.');
         }
-
-        return $response->withJson($value);
     }
 }
