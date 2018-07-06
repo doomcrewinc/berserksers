@@ -6,11 +6,11 @@
  *  Show structure of table with blacklist and perhaps a progress bar/notification of pass/failure.
  *  Store the results for analytics?
  */
-var dnsbl = (function($) {
-    var failed = [];
-    var passed = [];
-    var list   = [];
-    var lookup = '';
+let dnsbl = (function($) {
+    let failed = [];
+    let passed = [];
+    let list   = [];
+    let lookup = '';
 
     return {
         setLookup: function(data) {

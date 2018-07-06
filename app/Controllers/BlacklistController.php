@@ -9,9 +9,9 @@ use Slim\Http\Response;
 class BlacklistController extends Controller
 {
     /**
-     * @param $request
-     * @param $response
-     * @return \Slim\Views\Twig
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
      */
     public function index(Request $request, Response $response) {
         return $this->view->render($response, '/pages/dns/blacklist/index.twig', ['response' => $response]);
