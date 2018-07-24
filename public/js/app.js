@@ -3,10 +3,10 @@
         const upIcon = 'fa-angle-double-up';
         const downIcon = 'fa-angle-double-down';
 
-        var $header = $(this);
-        var $section = $header.siblings('table.table');
-        var $expander = $header.find('.section-expander');
-        var isExpanded = $header.attr('aria-expanded');
+        let $header = $(this);
+        let $section = $header.siblings('table.table');
+        let $expander = $header.find('.section-expander');
+        let isExpanded = $header.attr('aria-expanded');
 
         if (isExpanded === 'true') {
             $header.attr('aria-expanded', 'false');
@@ -17,5 +17,13 @@
         }
 
         $section.fadeToggle(500);
+    });
+
+    $('input[name=dnsbl]').bind('click', function() {
+        let search = $(this).val();
+        let results = $('#dnsbl-results');
+
+        dnsbl.setLookup($(this.val()));
+        dnsbl.queryServer();
     });
 })(jQuery);

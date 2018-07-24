@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Classes;
+namespace App\Classes\Dns;
 
-class DnsBlacklist
+use Slim\Http\Request;
+
+class Blacklist
 {
     protected $ip = '';
+    protected $server = '';
 
     protected $blacklisted = [];
 
-    protected $dnsBlackLists = [
+    protected static $dnsbl = [
       'all.s5h.net', 'b.barracudacentral.org', 'bl.emailbasura.org',
       'bl.spamcannibal.org', 'bl.spamcop.net', 'blacklist.woody.ch',
       'bogons.cymru.com', 'cbl.abuseat.org', 'cdl.anti-spam.org.cn',
@@ -31,39 +34,34 @@ class DnsBlacklist
       'zen.spamhaus.org', 'zombie.dnsbl.sorbs.net'
     ];
 
-    public function __construct($string) {
-        $ip = '';
+    /**
+     * Blacklist constructor.
+     * @param Request $request
+     */
+    public function __construct(Request $request) {
+        $lookup = $request->getParam('lookup');
+        $server = $request->getParam('server');
 
-        if (is_domain($string)) {
-            $ip = gethostbyname($string);
+        if (is_domain($lookup)) {
+            $lookup = gethostbyname($lookup);
         }
 
-        $this->ip = $ip;
+        $this->server = $server;
+        $this->ip     = $lookup;
     }
 
-    public function isBlacklisted() {
-        $reverse_ip = implode(".", array_reverse(explode(".", $this->ip)));
-
-        if ($this->checkBlacklists($reverse_ip)) {
-            return $this->blacklisted;
-        }
-        return false;
+    public static function returnList() {
+        return self::$dnsbl;
     }
 
-    protected function checkBlacklists($reverse_ip) {
-        $blacklisted = [];
+    public function checkIfBlacklisted() {
+        $lookup = implode(".", array_reverse(explode(".", $this->ip))) . '.' . $this->server . '.';
+        $result = checkdnsrr ($lookup, "A");
 
-        foreach ($this->dnsBlackLists as $bl) {
-            $lookup = $reverse_ip . "." . $bl;
-            $result = gethostbyname($lookup);
-            if ($result === $lookup) {
-                $blacklisted[] = $bl;
-            }
-        }
-
-        dump($blacklisted);
-        die;
-        return (!empty($this->blacklisted)) ? true : false;
+        return [
+            'lookup'      => $lookup,
+            'server'      => $this->server,
+            'blacklisted' => ($result) ? true :  false
+        ];
     }
-
 }

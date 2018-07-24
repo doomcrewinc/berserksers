@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Classes;
+namespace App\Classes\Dns;
 
-class DnsRecord
+use Slim\Http\Request;
+use Slim\Http\Response;
+
+class Record
 {
     protected $search;
 
-    protected $mapped_options = [
+    protected $allowed_records = [
         'a'     => DNS_A,
         'aaaa'  => DNS_AAAA,
         'mx'    => DNS_MX,
@@ -22,7 +25,7 @@ class DnsRecord
      *
      * @param $request
      */
-    public function __construct($request) {
+    public function __construct(Request $request) {
         $search = $request->getParam('search');
 
         if (is_ip($search)) {
@@ -44,7 +47,7 @@ class DnsRecord
         if (!empty($allRecords)) {
             foreach ($allRecords as $record) {
                 $type = strtolower($record['type']);
-                if (!empty($this->mapped_options[$type])) {
+                if (!empty($this->allowed_records[$type])) {
                     $records[$type][] = $record;
                 }
             }
@@ -86,6 +89,6 @@ class DnsRecord
      * @return bool
      */
     protected function validRecordType($recordType) {
-        return !empty($this->mapped_options[$recordType]);
+        return !empty($this->allowed_records[$recordType]);
     }
 }

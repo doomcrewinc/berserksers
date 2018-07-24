@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: drupp
- * Date: 2/28/2018
- * Time: 3:29 PM
- */
 
 namespace App\Validation\Rules;
 

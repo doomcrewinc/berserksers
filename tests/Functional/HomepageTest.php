@@ -5,7 +5,8 @@ namespace Tests\Functional;
 class HomepageTest extends BaseTestCase
 {
     /**
-     * Test that the index route returns a rendered response containing the text 'SlimFramework' but not a greeting
+     * @throws \Slim\Exception\MethodNotAllowedException
+     * @throws \Slim\Exception\NotFoundException
      */
     public function testGetHomepageWithoutName()
     {
@@ -17,7 +18,8 @@ class HomepageTest extends BaseTestCase
     }
 
     /**
-     * Test that the index route with optional name argument returns a rendered greeting
+     * @throws \Slim\Exception\MethodNotAllowedException
+     * @throws \Slim\Exception\NotFoundException
      */
     public function testGetHomepageWithGreeting()
     {
@@ -28,7 +30,8 @@ class HomepageTest extends BaseTestCase
     }
 
     /**
-     * Test that the index route won't accept a post request
+     * @throws \Slim\Exception\MethodNotAllowedException
+     * @throws \Slim\Exception\NotFoundException
      */
     public function testPostHomepageNotAllowed()
     {
