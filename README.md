@@ -10,13 +10,13 @@
 	- [ ] When logged in as a user
 	- [ ] Option to run traceroute and display it somehow
 	- [ ] Option to ping domain n times (ping -c domain.com) and display it somehow
-	- [ ] Option to add domain to smokeping daemon for 7 day monitoring of latency. 
+~~	- [ ] Option to add domain to smokeping daemon for 7 day monitoring of latency. ~~ 
 - [ ] When Logged in as an Admin, Admin Page/Console
 	- [ ] Admin export of: REMOTEIP, SEARCH_STR, Basic Browser info to either JSON or CSV for analytics
 	- [ ] Add/Create Users
 	- [ ] CRUD DB options
 	- [ ] User Perms -> Restrict users from doing x or y, restrict non-users from searching based on IP or search string
-	- [ ] Enable/Disable GDPR message
+~~	- [ ] Enable/Disable GDPR message ~~
 	- [ ] Enable/Disable the EU from using the tool
 	- [ ] Enable/Disable maintenance mode type screen
 	- [ ] Create ... notification's or pop ups or some shit that can float or whatever
